@@ -1,22 +1,37 @@
-html {
-  font-size: 14px;
+/* Sidebar */
+#sidebar-wrapper {
+    width: 250px; /* Zwiêksza szerokoœæ sidebaru */
+    min-height: 100vh;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+#page-content-wrapper {
+    width: calc(100% - 250px); /* Dostosowuje szerokoœæ treœci do szerokoœci sidebaru */
+    padding: 20px;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Wyœrodkowanie tekstu */
+.container-fluid, .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* Stylizacja tabel */
+.table {
+    width: 100%; /* Upewnij siê, ¿e tabela rozci¹ga siê na pe³n¹ szerokoœæ */
+    margin-top: 20px; /* Dodaj odstêp od góry */
 }
 
-body {
-  margin-bottom: 60px;
+    .table th, .table td {
+        text-align: center; /* Wyœrodkowanie tekstu w komórkach tabeli */
+    }
+
+/* Dodanie paddingu do sidebaru i treœci */
+.sidebar-heading, .list-group-item {
+    padding: 15px; /* Dodanie paddingu dla lepszej przestrzeni */
+}
+
+.list-group-item {
+    font-size: 16px; /* Zwiêksza rozmiar tekstu */
 }

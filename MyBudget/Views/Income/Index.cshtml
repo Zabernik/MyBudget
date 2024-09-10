@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Income";
+}
+
+<h2>Income Management</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Add New Income</h3>
+        <form method="post" action="@Url.Action("AddIncome", "Home")">
+            <div class="form-group">
+                <label for="incomeCategory">Category</label>
+                <select id="incomeCategory" class="form-control" name="category">
+                    <!-- Kategorie dochodów -->
+                    <option value="Salary">Salary</option>
+                    <option value="Bonus">Bonus</option>
+                    <option value="Investments">Investments</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="incomeAmount">Amount</label>
+                <input type="number" id="incomeAmount" class="form-control" name="amount" required />
+            </div>
+            <div class="form-group">
+                <label for="incomeDate">Date</label>
+                <input type="date" id="incomeDate" class="form-control" name="date" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Income</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Income History</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Lista dochodów -->
+                <tr>
+                    <td>Salary</td>
+                    <td>$3000</td>
+                    <td>2024-09-01</td>
+                </tr>
+                <!-- Dodaj inne wpisy tutaj -->
+            </tbody>
+        </table>
+    </div>
+</div>

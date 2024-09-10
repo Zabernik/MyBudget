@@ -6,44 +6,54 @@
     <title>@ViewData["Title"] - MyBudget</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MyBudget.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/darkmode.css" asp-append-version="true" />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyBudget</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="border-end bg-dark" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-primary text-white">MyBudget</div>
+            <div class="list-group list-group-flush">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="list-group-item list-group-item-action list-group-item-dark text-white p-3">Home</a>
+                <a asp-area="" asp-controller="Income" asp-action="Index" class="list-group-item list-group-item-action list-group-item-dark text-white p-3">Income</a>
+                <a asp-area="" asp-controller="Expenses" asp-action="Index" class="list-group-item list-group-item-action list-group-item-dark text-white p-3">Expenses</a>
+                <a asp-area="" asp-controller="Accounts" asp-action="Index" class="list-group-item list-group-item-action list-group-item-dark text-white p-3">Accounts</a>
+                <a asp-area="" asp-controller="Metals" asp-action="Index" class="list-group-item list-group-item-action list-group-item-dark text-white p-3">Precious Metals</a>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
     </div>
+    <!-- /#wrapper -->
 
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - MyBudget - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+    <!-- Bootstrap core JS-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

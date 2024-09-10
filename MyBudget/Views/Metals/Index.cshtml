@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Precious Metals";
+}
+
+<h2>Precious Metals Management</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Add Precious Metal Holdings</h3>
+        <form method="post" action="@Url.Action("AddMetal", "Home")">
+            <div class="form-group">
+                <label for="metalType">Metal Type</label>
+                <select id="metalType" class="form-control" name="metalType">
+                    <option value="Gold">Gold</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Platinum">Platinum</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="metalQuantity">Quantity (in grams)</label>
+                <input type="number" id="metalQuantity" class="form-control" name="quantity" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Metal</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Metal Holdings Overview</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Metal</th>
+                    <th>Quantity (grams)</th>
+                    <th>Current Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Lista metali -->
+                <tr>
+                    <td>Gold</td>
+                    <td>10</td>
+                    <td>$500</td>
+                    <td>
+                        <a href="#">Edit</a> | <a href="#">Delete</a>
+                    </td>
+                </tr>
+                <!-- Dodaj inne metale tutaj -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Historical Trends</h3>
+        <!-- Wykres tendencji wartości metali -->
+        <img src="~/Content/Images/metal-trends.png" alt="Historical Metal Trends Chart" />
+    </div>
+</div>
