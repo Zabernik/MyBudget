@@ -12,8 +12,8 @@ namespace MyBudget.Data
         {
         }
 
-        public DbSet<AccountBalance> AccountBalances { get; set; }
-        public DbSet<BalanceHistory> BalanceHistories { get; set; }
+        public DbSet<Deposit> Deposit { get; set; }
+        public DbSet<DepositHistory> DepositHistory { get; set; }
         public DbSet<IncomeCategory> IncomeCategories { get; set; }
         public DbSet<IncomeHistory> IncomeHistory { get; set; }
         public DbSet<ExpenseHistory> ExpenseHistory { get; set; }
@@ -26,15 +26,15 @@ namespace MyBudget.Data
             base.OnModelCreating(modelBuilder);
 
             // Configurations
-            modelBuilder.Entity<BalanceHistory>()
-                .HasOne(bh => bh.AccountBalance)
-                .WithMany(ab => ab.BalanceHistories)
-                .HasForeignKey(bh => bh.AccountBalanceID);
+            modelBuilder.Entity<DepositHistory>()
+                .HasOne(bh => bh.Deposit)
+                .WithMany(ab => ab.DepositHistory)
+                .HasForeignKey(bh => bh.DepositID);
 
             modelBuilder.Entity<IncomeHistory>()
-                .HasOne(ih => ih.AccountBalance)
+                .HasOne(ih => ih.Deposit)
                 .WithMany(ab => ab.IncomeHistories)
-                .HasForeignKey(ih => ih.AccountBalanceID);
+                .HasForeignKey(ih => ih.DepositID);
 
             modelBuilder.Entity<IncomeHistory>()
                 .HasOne(ih => ih.IncomeCategory)
@@ -42,14 +42,14 @@ namespace MyBudget.Data
                 .HasForeignKey(ih => ih.IncomeCategoryID);
 
             modelBuilder.Entity<ExpenseHistory>()
-                .HasOne(eh => eh.AccountBalance)
+                .HasOne(eh => eh.Deposit)
                 .WithMany(ab => ab.ExpenseHistories)
-                .HasForeignKey(eh => eh.AccountBalanceID);
+                .HasForeignKey(eh => eh.DepositID);
 
             modelBuilder.Entity<SavingsHistory>()
-                .HasOne(sh => sh.AccountBalance)
+                .HasOne(sh => sh.Deposit)
                 .WithMany(ab => ab.SavingsHistories)
-                .HasForeignKey(sh => sh.AccountBalanceID);
+                .HasForeignKey(sh => sh.DepositID);
 
             modelBuilder.Entity<SavingsHistory>()
                 .HasOne(sh => sh.SavingsType)

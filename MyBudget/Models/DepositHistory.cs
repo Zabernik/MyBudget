@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyBudget.Models
 {
-    public class BalanceHistory
+    public class DepositHistory
     {
         [Key]
-        public int BalanceHistoryID { get; set; }
-        [ForeignKey("AccountBalance")]
-        public int AccountBalanceID { get; set; }
+        public int DepositHistoryID { get; set; }
+        [ForeignKey("Deposit")]
+        public int DepositID { get; set; }
         public decimal Balance { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        public virtual AccountBalance AccountBalance { get; set; }
+        public virtual Deposit Deposit { get; set; }
     }
 }

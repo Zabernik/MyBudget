@@ -8,8 +8,8 @@ namespace MyBudget.Models
     {
         [Key]
         public int SavingsHistoryID { get; set; }
-        [ForeignKey("AccountBalance")]
-        public int AccountBalanceID { get; set; }
+        [ForeignKey("Deposit")]
+        public int DepositID { get; set; }
         [ForeignKey("SavingsType")]
         public int SavingsTypeID { get; set; }
         public decimal Amount { get; set; }
@@ -17,7 +17,7 @@ namespace MyBudget.Models
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        public virtual AccountBalance AccountBalance { get; set; }
+        public virtual Deposit Deposit { get; set; }
         public virtual SavingsType SavingsType { get; set; }
     }
 }

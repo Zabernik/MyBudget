@@ -8,13 +8,13 @@ namespace MyBudget.Models
     {
         [Key]
         public int ExpenseHistoryID { get; set; }
-        [ForeignKey("AccountBalance")]
-        public int AccountBalanceID { get; set; }
+        [ForeignKey("Deposit")]
+        public int DepositID { get; set; }
         public string Category { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        public virtual AccountBalance AccountBalance { get; set; }
+        public virtual Deposit Deposit { get; set; }
     }
 }

@@ -4,19 +4,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyBudget.Models
 {
-    public class AccountBalance
+    public class Deposit
     {
         [Key]
-        public int AccountBalanceID { get; set; }
+        public int DepositID { get; set; }
         [Required]
-        public string AccountName { get; set; }
+        public string DepositName { get; set; }
         public decimal Balance { get; set; }
         [Required]
         public string Currency { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime LastUpdatedDate { get; set; }
 
-        public ICollection<BalanceHistory> BalanceHistories { get; set; }
+        public ICollection<DepositHistory> DepositHistory { get; set; }
         public ICollection<IncomeHistory> IncomeHistories { get; set; }
         public ICollection<ExpenseHistory> ExpenseHistories { get; set; }
         public ICollection<SavingsHistory> SavingsHistories { get; set; }
