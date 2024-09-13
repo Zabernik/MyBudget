@@ -1,0 +1,24 @@
+﻿@model MyBudget.Models.ExpenseHistory
+
+@{
+    ViewData["Title"] = "Edit Expense";
+}
+
+<h2>Edit Expense</h2>
+
+<form asp-action="Edit" method="post">
+    <input asp-for="ExpenseHistoryID" type="hidden" />
+    <div class="form-group">
+        <label>Category</label>
+        <input asp-for="Category" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Amount</label>
+        <input asp-for="Amount" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Date</label>
+        <input asp-for="Date" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

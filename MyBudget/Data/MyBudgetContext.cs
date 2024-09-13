@@ -15,8 +15,8 @@ namespace MyBudget.Data
         public DbSet<AccountBalance> AccountBalances { get; set; }
         public DbSet<BalanceHistory> BalanceHistories { get; set; }
         public DbSet<IncomeCategory> IncomeCategories { get; set; }
-        public DbSet<IncomeHistory> IncomeHistories { get; set; }
-        public DbSet<ExpenseHistory> ExpenseHistories { get; set; }
+        public DbSet<IncomeHistory> IncomeHistory { get; set; }
+        public DbSet<ExpenseHistory> ExpenseHistory { get; set; }
         public DbSet<SavingsType> SavingsTypes { get; set; }
         public DbSet<SavingsHistory> SavingsHistories { get; set; }
         public DbSet<Rate> Rates { get; set; }

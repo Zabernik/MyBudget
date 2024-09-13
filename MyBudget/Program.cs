@@ -3,19 +3,19 @@ using MyBudget.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
-
+// Dodaj DbContext do kontenera DI (musi byæ przed builder.Build())
 builder.Services.AddDbContext<MyBudgetContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Configure the HTTP request pipeline.
+// Dodaj inne serwisy (np. kontrolery, us³ugi, itd.)
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build(); // Aplikacja zostaje zbudowana tutaj
+
+// Konfiguracja aplikacji po jej zbudowaniu
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
