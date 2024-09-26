@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MyBudget.Models.Deposit>
+
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+<h1>Deposits</h1>
+
+<p>
+    <a asp-action="Create">Create New Deposit</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().DepositName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Balance)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Currency)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.DepositName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Balance)</td>
+                <td>@Html.DisplayFor(modelItem => item.Currency)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DepositID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.DepositID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DepositID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

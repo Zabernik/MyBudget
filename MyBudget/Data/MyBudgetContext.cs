@@ -25,7 +25,6 @@ namespace MyBudget.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configurations
             modelBuilder.Entity<DepositHistory>()
                 .HasOne(bh => bh.Deposit)
                 .WithMany(ab => ab.DepositHistory)
