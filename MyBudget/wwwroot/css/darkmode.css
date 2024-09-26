@@ -9,13 +9,11 @@
     --item-hover-bg-color: #333333;
 }
 
-/* Ogólne style */
 body {
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
-/* Sidebar */
 #sidebar-wrapper {
     background-color: var(--sidebar-bg-color);
 }
@@ -30,9 +28,7 @@ body {
     color: var(--sidebar-text-color);
 }
 
-/* Tabela */
 .table th, .table td {
     border-color: var(--sidebar-text-color);
 }
 
-/* Inne style */

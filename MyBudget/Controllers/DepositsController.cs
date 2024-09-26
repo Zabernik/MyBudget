@@ -16,7 +16,6 @@ namespace MyBudget.Controllers
             _context = context;
         }
 
-        // Akcja wyświetlająca listę kont
         public IActionResult Index()
         {
             Console.WriteLine("Test DUPA!!!!!");
@@ -24,7 +23,6 @@ namespace MyBudget.Controllers
             return View(deposits);
         }
 
-        // Akcja wyświetlająca szczegóły konta
         public IActionResult Details(int id)
         {
             var deposit = _context.Deposit.Find(id);
@@ -35,10 +33,8 @@ namespace MyBudget.Controllers
             return View(deposit);
         }
 
-        // Akcja do tworzenia nowego konta
         public IActionResult Create()
         {
-            Console.WriteLine("Test DUPA!!");
             return View();
         }
 
@@ -64,10 +60,12 @@ namespace MyBudget.Controllers
             return View(deposit);
         }
 
-        // Akcja do edytowania konta
         public IActionResult Edit(int id)
         {
             var deposit = _context.Deposit.Find(id);
+            Console.WriteLine(deposit.DepositID);
+            Console.WriteLine(deposit.Currency);
+            Console.WriteLine(deposit.DepositName);
             if (deposit == null)
             {
                 return NotFound();
@@ -80,14 +78,21 @@ namespace MyBudget.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(deposit);
+                var existingDeposit = _context.Deposit.Find(id);
+
+                if (existingDeposit == null)
+                {
+                    return NotFound();
+                }
+
+                existingDeposit.DepositName = deposit.DepositName;
+
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(deposit);
         }
 
-        // Akcja do usunięcia konta
         public IActionResult Delete(int id)
         {
             var deposit = _context.Deposit.Find(id);

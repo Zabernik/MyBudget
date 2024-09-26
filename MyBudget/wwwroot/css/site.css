@@ -1,15 +1,14 @@
 /* Sidebar */
 #sidebar-wrapper {
-    width: 250px; /* Zwiêksza szerokoœæ sidebaru */
+    width: 250px;
     min-height: 100vh;
 }
 
 #page-content-wrapper {
-    width: calc(100% - 250px); /* Dostosowuje szerokoœæ treœci do szerokoœci sidebaru */
+    width: calc(100% - 250px);
     padding: 20px;
 }
 
-/* Wyœrodkowanie tekstu */
 .container-fluid, .main-content {
     display: flex;
     flex-direction: column;
@@ -17,21 +16,19 @@
     justify-content: center;
 }
 
-/* Stylizacja tabel */
 .table {
-    width: 100%; /* Upewnij siê, ¿e tabela rozci¹ga siê na pe³n¹ szerokoœæ */
-    margin-top: 20px; /* Dodaj odstêp od góry */
+    width: 100%;
+    margin-top: 20px; 
 }
 
     .table th, .table td {
-        text-align: center; /* Wyœrodkowanie tekstu w komórkach tabeli */
+        text-align: center;
     }
 
-/* Dodanie paddingu do sidebaru i treœci */
 .sidebar-heading, .list-group-item {
-    padding: 15px; /* Dodanie paddingu dla lepszej przestrzeni */
+    padding: 15px;
 }
 
 .list-group-item {
-    font-size: 16px; /* Zwiêksza rozmiar tekstu */
+    font-size: 16px;
 }

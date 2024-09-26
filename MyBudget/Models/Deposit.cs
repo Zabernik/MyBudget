@@ -14,7 +14,7 @@ namespace MyBudget.Models
         [Required]
         public decimal Balance { get; set; }
         [Required]
-        public string Currency { get; set; }
+        public string Currency { get; set; } = "PLN";
         public DateTime CreatedDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
 
