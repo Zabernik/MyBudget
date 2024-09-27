@@ -4,33 +4,26 @@
     ViewData["Title"] = "Account Details";
 }
 
-<h1>Account Details</h1>
+<h1 class="details-title">Account Details</h1>
 
-<div>
-    <h4>Account</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DepositName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DepositName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Balance)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Balance)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Currency)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Currency)
-        </dd>
-    </dl>
+<div class="details-card">
+    <div class="details-item">
+        <h4 class="details-label">Deposit Name</h4>
+        <p class="details-value">@Html.DisplayFor(model => model.DepositName)</p>
+    </div>
+
+    <div class="details-item">
+        <h4 class="details-label">Balance</h4>
+        <p class="details-value">@Html.DisplayFor(model => model.Balance)</p>
+    </div>
+
+    <div class="details-item">
+        <h4 class="details-label">Currency</h4>
+        <p class="details-value">@Html.DisplayFor(model => model.Currency)</p>
+    </div>
 </div>
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.DepositID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</p>
+
+<div class="details-actions">
+    <a asp-action="Edit" asp-route-id="@Model.DepositID" class="action-btn">Edit</a>
+    <a asp-action="Index" class="action-btn">Back to List</a>
+</div>
