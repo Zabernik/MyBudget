@@ -1,26 +1,48 @@
-﻿@{
+﻿@model IEnumerable<MyBudget.Models.Deposit>
+
+@{
     ViewBag.Title = "Dashboard";
 }
 
 <h2>Dashboard</h2>
 
-<div class="row">
-    <div class="col-md-6">
+<div class="dashboard-grid">
+    <!-- Skrót depozytów -->
+    <div class="dashboard-card">
         <h3>Account Balances</h3>
-        <img src="~/Content/Images/account-balances.png" alt="Account Balances Chart" />
+
+        <!-- Jeśli nie ma depozytów, wyświetl komunikat -->
+        @if (!Model.Any())
+        {
+            <p>No deposits available.</p>
+        }
+        else
+        {
+            <div class="dashboard-summary">
+                @foreach (var deposit in Model)
+                {
+                    <div class="dashboard-deposit-card">
+                        <h4>@deposit.DepositName</h4>
+                        <p>Balance: <strong>@deposit.Balance @deposit.Currency</strong></p>
+                    </div>
+                }
+            </div>
+        }
     </div>
-    <div class="col-md-6">
+
+    <!-- Inna sekcja obok depozytów -->
+    <div class="dashboard-card">
         <h3>Savings Trends</h3>
         <img src="~/Content/Images/savings-trends.png" alt="Savings Trends Chart" />
     </div>
-</div>
 
-<div class="row">
-    <div class="col-md-6">
+    <!-- Kolejne sekcje poniżej -->
+    <div class="dashboard-card">
         <h3>Income vs Expenses</h3>
         <img src="~/Content/Images/income-expenses.png" alt="Income vs Expenses Chart" />
     </div>
-    <div class="col-md-6">
+
+    <div class="dashboard-card">
         <h3>Precious Metals Overview</h3>
         <img src="~/Content/Images/metals-overview.png" alt="Precious Metals Overview" />
     </div>

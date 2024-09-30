@@ -1,8 +1,10 @@
-﻿body {
+﻿/* Główne tło i kolory */
+body {
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
+/* Sidebar */
 #sidebar-wrapper {
     background-color: var(--sidebar-bg-color);
 }
@@ -17,11 +19,14 @@
     color: var(--sidebar-text-color);
 }
 
+/* Tabele */
 .table th, .table td {
     border-color: var(--sidebar-text-color);
     color: var(--item-text-color);
 }
 
+
+/* Nagłówek tytułu dla zakładki Deposits */
 .deposit-title {
     font-size: 2rem;
     font-weight: bold;
@@ -30,6 +35,7 @@
     text-align: center;
 }
 
+/* Przyciski do tworzenia nowego depozytu */
 .create-deposit {
     margin-bottom: 20px;
     text-align: center;
@@ -48,6 +54,7 @@
         background-color: var(--item-hover-bg-color);
     }
 
+/* Layout kart depozytów */
 .deposit-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -80,6 +87,7 @@
     margin-bottom: 15px;
 }
 
+/* Przyciski akcji (Edycja, Usuwanie itd.) */
 .actions {
     display: flex;
     justify-content: space-between;
@@ -99,6 +107,7 @@
     color: red;
 }
 
+/* Styl formularza edycji */
 .edit-title {
     font-size: 2rem;
     font-weight: bold;
@@ -141,7 +150,7 @@
     }
 
 .validation-message {
-    color: red;
+    color: var(--danger-color);
     font-size: 0.9rem;
     margin-top: 5px;
 }
@@ -163,58 +172,9 @@
         background-color: var(--item-hover-bg-color);
     }
 
-.details-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--text-color);
-    text-align: center;
-    margin-bottom: 20px;
-}
 
-.details-card {
-    background-color: var(--sidebar-bg-color);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-}
-
-.details-item {
-    margin-bottom: 20px;
-}
-
-.details-label {
-    font-size: 1.2rem;
-    color: var(--header-text-color);
-    margin-bottom: 5px;
-}
-
-.details-value {
-    font-size: 1.1rem;
-    color: var(--item-text-color);
-}
-
-.details-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.action-btn {
-    background-color: var(--header-bg-color);
-    color: var(--header-text-color);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-    .action-btn:hover {
-        background-color: var(--item-hover-bg-color);
-    }
-
-.delete-title {
+/* Widok Delete */
+.delete-title, .details-title {
     font-size: 2rem;
     font-weight: bold;
     color: var(--text-color);
@@ -229,7 +189,8 @@
     margin-bottom: 20px;
 }
 
-.delete-card {
+/* Karty detali */
+.details-card, .delete-card {
     background-color: var(--sidebar-bg-color);
     padding: 20px;
     border-radius: 10px;
@@ -238,51 +199,75 @@
     margin: 0 auto 20px auto;
 }
 
-.delete-item {
+.details-item, .delete-item {
     margin-bottom: 20px;
 }
 
-.delete-label {
+.details-label, .delete-label {
     font-size: 1.2rem;
     color: var(--header-text-color);
     margin-bottom: 5px;
 }
 
-.delete-value {
+.details-value, .delete-value {
     font-size: 1.1rem;
     color: var(--item-text-color);
 }
 
-.delete-form {
+.details-actions, .delete-form {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.delete-btn {
-    background-color: red;
-    color: var(--header-text-color);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+/* Stylizacja dla układu dashboardu */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Odstęp między kafelkami */
+    margin-top: 20px;
 }
 
-    .delete-btn:hover {
-        background-color: darkred;
-    }
-
-.cancel-btn {
-    background-color: var(--header-bg-color);
-    color: var(--header-text-color);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
+/* Styl kafelków w dashboardzie */
+.dashboard-card {
+    background-color: var(--sidebar-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-    .cancel-btn:hover {
+    .dashboard-card:hover {
         background-color: var(--item-hover-bg-color);
+        transform: scale(1.05);
     }
+
+/* Styl dla streszczenia depozytów */
+.dashboard-deposit-card {
+    background-color: var(--sidebar-bg-color);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 10px;
+}
+
+    .dashboard-deposit-card h4 {
+        color: var(--header-text-color);
+        margin-bottom: 5px;
+    }
+
+    .dashboard-deposit-card p {
+        color: var(--text-color);
+        margin-bottom: 0;
+    }
+
+    .dashboard-deposit-card:hover {
+        background-color: var(--item-hover-bg-color);
+        transform: scale(1.05);
+    }
+
+/* Na mniejszych ekranach (smartfony) */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Jedna kolumna dla
