@@ -303,3 +303,57 @@ footer.footer.mt-auto {
     }
 }
 
+/* Główne przyciski akcji */
+.action-btn {
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+}
+
+    .action-btn:hover {
+        background-color: var(--item-hover-bg-color);
+        transform: translateY(-2px); /* Efekt uniesienia */
+    }
+
+/* Przycisk edycji */
+.edit-btn {
+    background-color: #007bff; /* Niebieski dla edycji */
+}
+
+    .edit-btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Przycisk aktualizacji stanu konta */
+.update-btn {
+    background-color: #28a745; /* Zielony dla aktualizacji */
+}
+
+    .update-btn:hover {
+        background-color: #218838;
+    }
+
+/* Przycisk szczegółów */
+.details-btn {
+    background-color: #17a2b8; /* Jasnoniebieski dla szczegółów */
+}
+
+    .details-btn:hover {
+        background-color: #117a8b;
+    }
+
+/* Przycisk usunięcia */
+.delete-btn {
+    background-color: #dc3545; /* Czerwony dla usunięcia */
+}
+
+    .delete-btn:hover {
+        background-color: #c82333;
+    }

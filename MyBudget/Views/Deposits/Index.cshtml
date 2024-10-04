@@ -17,9 +17,10 @@
             <h2 class="deposit-name">@Html.DisplayFor(modelItem => item.DepositName)</h2>
             <p class="deposit-balance">Balance: @Html.DisplayFor(modelItem => item.Balance) @Html.DisplayFor(modelItem => item.Currency)</p>
             <div class="actions">
-                <a asp-action="Edit" asp-route-id="@item.DepositID" class="action-link">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.DepositID" class="action-link">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.DepositID" class="action-link delete-link">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.DepositID" class="action-btn edit-btn">Edit</a>
+                <a asp-action="UpdateBalance" asp-route-id="@item.DepositID" class="action-btn update-btn">Update Balance</a>
+                <a asp-action="Details" asp-route-id="@item.DepositID" class="action-btn details-btn">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.DepositID" class="action-btn delete-btn">Delete</a>
             </div>
         </div>
     }

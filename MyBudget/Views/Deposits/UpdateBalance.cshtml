@@ -1,0 +1,23 @@
+﻿@model MyBudget.Models.Deposit
+
+@{
+    ViewData["Title"] = "Update Balance";
+}
+
+<h1 class="edit-title">Update Deposit</h1>
+
+<form asp-action="UpdateBalance" class="edit-form">
+    <input type="hidden" asp-for="DepositID" />
+    <input type="hidden" asp-for="Currency" />
+    <input type="hidden" asp-for="DepositName" />
+
+    <div class="form-group">
+        <label asp-for="Balance" class="form-label"></label>
+        <input asp-for="Balance" class="form-input" />
+        <span asp-validation-for="Balance" class="validation-message"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="save-btn" />
+    </div>
+</form>

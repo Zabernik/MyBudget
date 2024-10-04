@@ -115,5 +115,35 @@ namespace MyBudget.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult UpdateBalance(int id)
+        {
+            var deposit = _context.Deposit.Find(id);
+            if (deposit == null)
+            {
+                return NotFound();
+            }
+            return View(deposit);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateBalance(int id, Deposit deposit)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingDeposit = _context.Deposit.Find(id);
+
+                if (existingDeposit == null)
+                {
+                    return NotFound();
+                }
+
+                existingDeposit.Balance = deposit.Balance;
+
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(deposit);
+        }
     }
 }
