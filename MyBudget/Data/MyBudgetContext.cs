@@ -14,9 +14,6 @@ namespace MyBudget.Data
 
         public DbSet<Deposit> Deposit { get; set; }
         public DbSet<DepositHistory> DepositHistory { get; set; }
-        public DbSet<IncomeCategory> IncomeCategories { get; set; }
-        public DbSet<IncomeHistory> IncomeHistory { get; set; }
-        public DbSet<ExpenseHistory> ExpenseHistory { get; set; }
         public DbSet<SavingsType> SavingsTypes { get; set; }
         public DbSet<SavingsHistory> SavingsHistories { get; set; }
         public DbSet<Rate> Rates { get; set; }
@@ -29,21 +26,6 @@ namespace MyBudget.Data
                 .HasOne(bh => bh.Deposit)
                 .WithMany(ab => ab.DepositHistory)
                 .HasForeignKey(bh => bh.DepositID);
-
-            modelBuilder.Entity<IncomeHistory>()
-                .HasOne(ih => ih.Deposit)
-                .WithMany(ab => ab.IncomeHistories)
-                .HasForeignKey(ih => ih.DepositID);
-
-            modelBuilder.Entity<IncomeHistory>()
-                .HasOne(ih => ih.IncomeCategory)
-                .WithMany()
-                .HasForeignKey(ih => ih.IncomeCategoryID);
-
-            modelBuilder.Entity<ExpenseHistory>()
-                .HasOne(eh => eh.Deposit)
-                .WithMany(ab => ab.ExpenseHistories)
-                .HasForeignKey(eh => eh.DepositID);
 
             modelBuilder.Entity<SavingsHistory>()
                 .HasOne(sh => sh.Deposit)

@@ -19,8 +19,6 @@ namespace MyBudget.Models
         public DateTime LastUpdatedDate { get; set; }
 
         public ICollection<DepositHistory> DepositHistory { get; set; } = new List<DepositHistory>();
-        public ICollection<IncomeHistory> IncomeHistories { get; set; } = new List<IncomeHistory>();
-        public ICollection<ExpenseHistory> ExpenseHistories { get; set; } = new List<ExpenseHistory>();
         public ICollection<SavingsHistory> SavingsHistories { get; set; } = new List<SavingsHistory>();
     }
 }
