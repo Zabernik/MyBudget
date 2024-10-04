@@ -225,7 +225,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px; /* Odstęp między kafelkami */
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 /* Styl kafelków w dashboardzie */
@@ -249,7 +249,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
     .dashboard-deposit-card h4 {
@@ -267,7 +267,39 @@ body {
         transform: scale(1.05);
     }
 
+    /* Stylizacja stopki */
+footer.footer {
+    background-color: var(--sidebar-bg-color);
+    color: var(--text-color); 
+    padding: 10px 0;
+    text-align: center;
+    width: 100%; 
+    position: relative;
+    bottom: 0;
+}
+
+footer.footer a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+footer.footer a:hover {
+    color: var(--header-text-color);
+    text-decoration: underline;
+}
+
+footer.footer.mt-auto {
+    margin-top: auto;
+}
+
 /* Na mniejszych ekranach (smartfony) */
 @media (max-width: 768px) {
     .dashboard-grid {
-        grid-template-columns: 1fr; /* Jedna kolumna dla
+        grid-template-columns: 1fr; /* Jedna kolumna dla wszystkich sekcji na mniejszych ekranach */
+    }
+
+    .dashboard-card {
+        height: auto; /* Zmieniamy wysokość na automatyczną na mniejszych ekranach */
+    }
+}
+
