@@ -131,6 +131,7 @@ namespace MyBudget.Controllers
         {
             if (ModelState.IsValid)
             {
+                DepositHistory newDepositHistory = new DepositHistory();
                 var existingDeposit = _context.Deposit.Find(id);
 
                 if (existingDeposit == null)
@@ -138,7 +139,14 @@ namespace MyBudget.Controllers
                     return NotFound();
                 }
 
+                var diffDeposit = deposit.Balance - existingDeposit.Balance;
                 existingDeposit.Balance = deposit.Balance;
+
+                newDepositHistory.DepositID = existingDeposit.DepositID;
+                newDepositHistory.Balance = diffDeposit;
+                newDepositHistory.Date = DateTime.UtcNow;
+
+                _context.DepositHistory.Add(newDepositHistory);
 
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
