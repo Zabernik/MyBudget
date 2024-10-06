@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyBudget.Data;
 using MyBudget.Models;
+using Newtonsoft.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyBudget.Controllers
@@ -155,5 +158,82 @@ namespace MyBudget.Controllers
             }
             return View(deposit);
         }
+
+        public async Task<IActionResult> PrepareDepositData()
+        {
+            try
+            {
+                Console.WriteLine("[INFO] Pobieranie danych z bazy danych...");
+
+                var depositData = await _context.Deposit
+                    .Include(d => d.DepositHistory)
+                    .Select(d => new
+                    {
+                        DepositName = d.DepositName,
+                        Balance = d.Balance,
+                        Currency = d.Currency,
+                        Histories = d.DepositHistory
+                            .OrderBy(h => h.Date)
+                            .Select(h => new { h.Date, h.PreviousDeposit, h.Difference })
+                    })
+                    .ToListAsync();
+
+                var jsonData = JsonConvert.SerializeObject(depositData);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "deposit_data.json");
+
+                Console.WriteLine($"[INFO] Zapisywanie danych do pliku JSON: {filePath}");
+                System.IO.File.WriteAllText(filePath, jsonData);
+
+                Console.WriteLine("[INFO] Dane zostały zapisane poprawnie.");
+                return Ok("Data prepared for Python.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Błąd podczas przygotowywania danych: {ex.Message}");
+                return StatusCode(500, "Błąd podczas przygotowywania danych.");
+            }
+        }
+
+
+        public IActionResult RunPythonScript()
+        {
+            try
+            {
+                string pythonScript = Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "Script.py");
+                Console.WriteLine($"[INFO] Uruchamianie skryptu Python: {pythonScript}");
+
+                var psi = new ProcessStartInfo
+                {
+                    FileName = @"python",
+                    Arguments = $"\"{pythonScript}\"",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
+                };
+
+                var process = Process.Start(psi);
+                string output = process.StandardOutput.ReadToEnd();
+                string errors = process.StandardError.ReadToEnd();
+                process.WaitForExit();
+
+                Console.WriteLine($"[INFO] Wynik skryptu Python: {output}");
+                if (!string.IsNullOrWhiteSpace(errors))
+                {
+                    Console.WriteLine($"[ERROR] Błędy skryptu Python: {errors}");
+                }
+
+                return Ok("Python script executed, graphs generated.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Błąd podczas uruchamiania skryptu: {ex.Message}");
+                return StatusCode(500, "Błąd podczas uruchamiania skryptu.");
+            }
+        }
+
+
+
+
     }
 }

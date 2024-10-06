@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyBudget.Models.Deposit>
+@using System.Linq
 
 @{
     ViewBag.Title = "Dashboard";
@@ -6,12 +7,10 @@
 
 <h2>Dashboard</h2>
 
+
 <div class="dashboard-grid">
-    <!-- Skrót depozytów -->
     <div class="dashboard-card">
         <h3>Account Balances</h3>
-
-        <!-- Jeśli nie ma depozytów, wyświetl komunikat -->
         @if (!Model.Any())
         {
             <p>No deposits available.</p>
@@ -30,20 +29,8 @@
         }
     </div>
 
-    <!-- Inna sekcja obok depozytów -->
     <div class="dashboard-card">
         <h3>Savings Trends</h3>
-        <img src="~/Content/Images/savings-trends.png" alt="Savings Trends Chart" />
-    </div>
-
-    <!-- Kolejne sekcje poniżej -->
-    <div class="dashboard-card">
-        <h3>Income vs Expenses</h3>
-        <img src="~/Content/Images/income-expenses.png" alt="Income vs Expenses Chart" />
-    </div>
-
-    <div class="dashboard-card">
-        <h3>Precious Metals Overview</h3>
-        <img src="~/Content/Images/metals-overview.png" alt="Precious Metals Overview" />
+        <img src="~/Graphs/total_balance_history.png" alt="Total Balance History Chart" />
     </div>
 </div>

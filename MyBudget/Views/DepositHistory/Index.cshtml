@@ -6,7 +6,6 @@
 
 <h1 class="deposit-title">Deposits</h1>
 
-<!-- Layout dla kart depozytów -->
 <div class="deposit-grid">
     @foreach (var deposit in Model)
     {
@@ -16,13 +15,11 @@
             <button class="load-history-btn" data-deposit-id="@deposit.DepositID">Load History</button>
 
             <div id="history-@deposit.DepositID" class="history-section">
-                <!-- Tutaj AJAX załaduje historię depozytu -->
             </div>
         </div>
     }
 </div>
 
-<!-- Skrypty AJAX do pobierania danych -->
 @section Scripts {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
