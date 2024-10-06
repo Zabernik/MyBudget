@@ -14,16 +14,12 @@
 
     <div class="details-item">
         <h4 class="details-label">Balance</h4>
-        <p class="details-value">@Html.DisplayFor(model => model.Balance)</p>
+        <p class="details-value">@Html.DisplayFor(model => model.Balance) @Html.DisplayFor(model => model.Currency)</p>
     </div>
 
-    <div class="details-item">
-        <h4 class="details-label">Currency</h4>
-        <p class="details-value">@Html.DisplayFor(model => model.Currency)</p>
+    <!-- Przyciski wewnątrz ramki -->
+    <div class="details-actions">
+        <a asp-action="Edit" asp-route-id="@Model.DepositID" class="action-btn">Edit</a>
+        <a asp-action="Index" class="action-btn">Back to List</a>
     </div>
-</div>
-
-<div class="details-actions">
-    <a asp-action="Edit" asp-route-id="@Model.DepositID" class="action-btn">Edit</a>
-    <a asp-action="Index" class="action-btn">Back to List</a>
 </div>

@@ -5,17 +5,19 @@
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Balance</th>
+                <th>Difference</th>
                 <th>Description</th>
+                <th>Previous Deposit</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var history in Model)
             {
-                <tr class="@((history.Balance < 0) ? "negative-record" : "positive-record")">
+                <tr class="@((history.Difference < 0) ? "negative-record" : "positive-record")">
                     <td>@history.Date.ToString("dd-MM-yyyy")</td>
-                    <td>@history.Balance</td>
+                    <td>@history.Difference</td>
                     <td>@history.Description</td>
+                    <td>@history.PreviousDeposit</td>
                 </tr>
             }
         </tbody>

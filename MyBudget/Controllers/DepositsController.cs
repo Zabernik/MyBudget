@@ -140,10 +140,12 @@ namespace MyBudget.Controllers
                 }
 
                 var diffDeposit = deposit.Balance - existingDeposit.Balance;
+
+                newDepositHistory.PreviousDeposit = existingDeposit.Balance;
                 existingDeposit.Balance = deposit.Balance;
 
                 newDepositHistory.DepositID = existingDeposit.DepositID;
-                newDepositHistory.Balance = diffDeposit;
+                newDepositHistory.Difference = diffDeposit;
                 newDepositHistory.Date = DateTime.UtcNow;
 
                 _context.DepositHistory.Add(newDepositHistory);

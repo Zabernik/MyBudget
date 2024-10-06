@@ -11,7 +11,8 @@ namespace MyBudget.Models
         public int DepositHistoryID { get; set; }
         [ForeignKey("Deposit")]
         public int DepositID { get; set; }
-        public decimal Balance { get; set; }
+        public decimal Difference { get; set; }
+        public decimal PreviousDeposit { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; } = "";
 
