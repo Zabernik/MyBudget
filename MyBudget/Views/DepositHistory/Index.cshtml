@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyBudget.Models.Deposit>
+
+@{
+    ViewData["Title"] = "Deposit History";
+}
+
+<h1 class="deposit-title">Deposits</h1>
+
+<!-- Layout dla kart depozytów -->
+<div class="deposit-grid">
+    @foreach (var deposit in Model)
+    {
+        <div class="deposit-card">
+            <h2 class="deposit-name">@deposit.DepositName</h2>
+            <p class="deposit-balance">Balance: @deposit.Balance @deposit.Currency</p>
+            <button class="load-history-btn" data-deposit-id="@deposit.DepositID">Load History</button>
+
+            <div id="history-@deposit.DepositID" class="history-section">
+                <!-- Tutaj AJAX załaduje historię depozytu -->
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Skrypty AJAX do pobierania danych -->
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            console.log("JQuery loaded");
+
+            $(document).on("click", ".load-history-btn", function () {
+                var depositId = $(this).data("deposit-id");
+                var historySection = $("#history-" + depositId);
+
+                $.ajax({
+                    url: '@Url.Action("GetDepositHistory", "DepositHistory")',
+                    data: { depositId: depositId },
+                    success: function (result) {
+                        historySection.html(result);
+                        console.log("History loaded for Deposit ID: " + depositId);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error loading history: " + error);
+                    }
+                });
+            });
+        });
+    </script>
+}

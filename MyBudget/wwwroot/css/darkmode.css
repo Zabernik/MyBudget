@@ -25,7 +25,6 @@ body {
     color: var(--item-text-color);
 }
 
-
 /* Nagłówek tytułu dla zakładki Deposits */
 .deposit-title {
     font-size: 2rem;
@@ -57,7 +56,7 @@ body {
 /* Layout kart depozytów */
 .deposit-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Dynamiczny layout w zależności od szerokości ekranu */
     gap: 20px;
 }
 
@@ -172,7 +171,6 @@ body {
         background-color: var(--item-hover-bg-color);
     }
 
-
 /* Widok Delete */
 .delete-title, .details-title {
     font-size: 2rem;
@@ -267,30 +265,30 @@ body {
         transform: scale(1.05);
     }
 
-    /* Stylizacja stopki */
+/* Stylizacja stopki */
 footer.footer {
     background-color: var(--sidebar-bg-color);
-    color: var(--text-color); 
+    color: var(--text-color);
     padding: 10px 0;
     text-align: center;
-    width: 100%; 
+    width: 100%;
     position: relative;
     bottom: 0;
 }
 
-footer.footer a {
-    color: var(--link-color);
-    text-decoration: none;
-}
+    footer.footer a {
+        color: var(--link-color);
+        text-decoration: none;
+    }
 
-footer.footer a:hover {
-    color: var(--header-text-color);
-    text-decoration: underline;
-}
+        footer.footer a:hover {
+            color: var(--header-text-color);
+            text-decoration: underline;
+        }
 
-footer.footer.mt-auto {
-    margin-top: auto;
-}
+    footer.footer.mt-auto {
+        margin-top: auto;
+    }
 
 /* Na mniejszych ekranach (smartfony) */
 @media (max-width: 768px) {
@@ -357,3 +355,47 @@ footer.footer.mt-auto {
     .delete-btn:hover {
         background-color: #c82333;
     }
+
+/* Przycisk ładowania historii */
+.load-history-btn {
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+    .load-history-btn:hover {
+        background-color: var(--item-hover-bg-color);
+    }
+
+.history-section {
+    margin-top: 10px;
+}
+
+/* Stylizacja tabeli historii */
+.history-table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table th, .table td {
+    border-color: var(--sidebar-text-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px;
+}
+
+/* Wyróżnienie wierszy historii dla pozytywnych i negatywnych rekordów */
+.positive-record {
+    background-color: rgba(40, 167, 69, 0.1); /* Jasnozielone tło dla pozytywnych wartości */
+    color: #28a745; /* Zielony tekst */
+}
+
+.negative-record {
+    background-color: rgba(220, 53, 69, 0.1); /* Jasnoczerwone tło dla negatywnych wartości */
+    color: #dc3545; /* Czerwony tekst */
+}

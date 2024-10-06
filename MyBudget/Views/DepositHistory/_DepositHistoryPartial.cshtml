@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MyBudget.Models.DepositHistory>
+
+<div class="history-table">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Balance</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var history in Model)
+            {
+                <tr class="@((history.Balance < 0) ? "negative-record" : "positive-record")">
+                    <td>@history.Date.ToString("dd-MM-yyyy")</td>
+                    <td>@history.Balance</td>
+                    <td>@history.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
