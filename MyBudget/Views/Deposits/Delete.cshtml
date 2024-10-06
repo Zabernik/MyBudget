@@ -18,10 +18,11 @@
         <h4 class="delete-label">Balance</h4>
         <p class="delete-value">@Model.Balance @Model.Currency</p>
     </div>
-</div>
 
-<form asp-action="Delete" method="post" class="delete-form">
-    <input type="hidden" asp-for="DepositID" />
-    <input type="submit" value="Delete" class="delete-btn" />
-    <a asp-action="Index" class="cancel-btn">Back to List</a>
-</form>
+    <!-- Form w ramce z przyciskami -->
+    <form asp-action="Delete" method="post" class="delete-form">
+        <input type="hidden" asp-for="DepositID" />
+        <input type="submit" value="Delete" class="delete-btn" />
+        <a asp-action="Index" class="cancel-btn">Back to List</a>
+    </form>
+</div>

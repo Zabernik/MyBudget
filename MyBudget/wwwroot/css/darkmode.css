@@ -399,3 +399,76 @@ footer.footer {
     background-color: rgba(220, 53, 69, 0.1); /* Jasnoczerwone tło dla negatywnych wartości */
     color: #dc3545; /* Czerwony tekst */
 }
+
+/* Karta do usuwania depozytu */
+.delete-card {
+    background-color: var(--sidebar-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
+.delete-item {
+    margin-bottom: 20px;
+}
+
+.delete-label {
+    font-size: 1.2rem;
+    color: var(--header-text-color);
+    margin-bottom: 5px;
+}
+
+.delete-value {
+    font-size: 1.1rem;
+    color: var(--item-text-color);
+}
+
+/* Formularz przycisków do usuwania i anulowania */
+.delete-form {
+    display: flex;
+    justify-content: center; /* Wyśrodkowanie przycisków */
+    gap: 10px; /* Zmniejszamy odstęp między przyciskami */
+    margin-top: 20px; /* Odsunięcie przycisków od treści */
+}
+
+/* Przycisk usunięcia */
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    width: auto;
+    min-width: 100px;
+}
+
+    .delete-btn:hover {
+        background-color: #c82333;
+        transform: translateY(-2px);
+    }
+
+/* Przycisk anulowania */
+.cancel-btn {
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    width: auto;
+    min-width: 100px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+    .cancel-btn:hover {
+        background-color: var(--item-hover-bg-color);
+        transform: translateY(-2px);
+    }
