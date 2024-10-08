@@ -54,7 +54,12 @@ def plot_deposit_history(deposit_name, df):
             width=1000,
             margin=dict(l=20, r=20, t=40, b=40),
             legend=dict(x=0, y=1),
-            showlegend=True
+            showlegend=True,
+            plot_bgcolor='#121212',
+            paper_bgcolor='#121212',
+            font=dict(color='#e0e0e0'),
+            xaxis=dict(showgrid=False, color='#e0e0e0'),
+            yaxis=dict(showgrid=True, gridcolor='#333333', color='#e0e0e0')
         )
 
         safe_deposit_name = deposit_name.replace(" ", "_")
@@ -85,9 +90,13 @@ try:
         title='Total Balance Across All Deposits (Month by Month)',
         xaxis_title='Date',
         yaxis_title='Total Balance',
-        hovermode="x"
+        hovermode="x",
+        plot_bgcolor='#121212',
+        paper_bgcolor='#121212',
+        font=dict(color='#e0e0e0'),
+        xaxis=dict(showgrid=False, color='#e0e0e0'),
+        yaxis=dict(showgrid=True, gridcolor='#333333', color='#e0e0e0')
     )
-
     file_name = f'{output_dir}/total_balance_history.html'
     fig.write_html(file_name)
     print(f"[INFO] Wykres sumaryczny zapisany: {file_name}")
