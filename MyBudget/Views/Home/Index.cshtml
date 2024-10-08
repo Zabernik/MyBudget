@@ -9,7 +9,7 @@
 
 
 <div class="dashboard-grid">
-    <div class="dashboard-card">
+    <div class="dashboard-card deposits-section">
         <h3>Account Balances</h3>
         @if (!Model.Any())
         {
@@ -20,7 +20,7 @@
             <div class="dashboard-summary">
                 @foreach (var deposit in Model)
                 {
-                    <div class="dashboard-deposit-card">
+                    <div class="dashboard-deposit-card deposit-card-toggle" data-deposit="@deposit.DepositName">
                         <h4>@deposit.DepositName</h4>
                         <p>Balance: <strong>@deposit.Balance @deposit.Currency</strong></p>
                     </div>
@@ -29,8 +29,29 @@
         }
     </div>
 
-    <div class="dashboard-card">
+    <div class="dashboard-card charts-section full-width-card">
         <h3>Savings Trends</h3>
-        <img src="~/Graphs/total_balance_history.png" alt="Total Balance History Chart" />
+        <iframe id="chart-frame" src="~/Graphs/Konto_PKO_BP_history.html" width="100%" height="800"></iframe>
     </div>
 </div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".dashboard-deposit-card").click(function () {
+                var depositName = $(this).data("deposit");
+                var iframe = $("#chart-frame");
+
+                $(".dashboard-deposit-card").removeClass("active");
+                $(this).addClass("active");
+
+                var safeDepositName = depositName.replace(/\s+/g, "_");
+
+                iframe.attr("src", "/Graphs/" + safeDepositName + "_history.html");
+            });
+        });
+    </script>
+}
+
+

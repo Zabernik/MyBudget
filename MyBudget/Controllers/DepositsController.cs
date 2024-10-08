@@ -146,6 +146,7 @@ namespace MyBudget.Controllers
 
                 newDepositHistory.PreviousDeposit = existingDeposit.Balance;
                 existingDeposit.Balance = deposit.Balance;
+                existingDeposit.LastUpdatedDate = DateTime.UtcNow;
 
                 newDepositHistory.DepositID = existingDeposit.DepositID;
                 newDepositHistory.Difference = diffDeposit;
@@ -172,9 +173,16 @@ namespace MyBudget.Controllers
                         DepositName = d.DepositName,
                         Balance = d.Balance,
                         Currency = d.Currency,
+                        CreatedDate = d.CreatedDate,
+                        LastUpdatedDate = d.LastUpdatedDate,
                         Histories = d.DepositHistory
                             .OrderBy(h => h.Date)
-                            .Select(h => new { h.Date, h.PreviousDeposit, h.Difference })
+                            .Select(h => new
+                            {
+                                h.Date,
+                                h.PreviousDeposit,
+                                h.Difference
+                            })
                     })
                     .ToListAsync();
 
@@ -193,6 +201,7 @@ namespace MyBudget.Controllers
                 return StatusCode(500, "Błąd podczas przygotowywania danych.");
             }
         }
+
 
 
         public IActionResult RunPythonScript()
@@ -231,9 +240,5 @@ namespace MyBudget.Controllers
                 return StatusCode(500, "Błąd podczas uruchamiania skryptu.");
             }
         }
-
-
-
-
     }
 }

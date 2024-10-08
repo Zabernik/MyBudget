@@ -19,8 +19,4 @@
     <PackageReference Include="python" Version="3.12.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Graphs\" />
-  </ItemGroup>
-
 </Project>
