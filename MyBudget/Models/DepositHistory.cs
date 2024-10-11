@@ -13,6 +13,7 @@ namespace MyBudget.Models
         public int DepositID { get; set; }
         public decimal Difference { get; set; }
         public decimal PreviousDeposit { get; set; }
+        public decimal ActualDeposit { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; } = "";
 

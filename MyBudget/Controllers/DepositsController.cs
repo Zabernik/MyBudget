@@ -145,6 +145,7 @@ namespace MyBudget.Controllers
                 var diffDeposit = deposit.Balance - existingDeposit.Balance;
 
                 newDepositHistory.PreviousDeposit = existingDeposit.Balance;
+                newDepositHistory.ActualDeposit = deposit.Balance;
                 existingDeposit.Balance = deposit.Balance;
                 existingDeposit.LastUpdatedDate = DateTime.UtcNow;
 
@@ -181,6 +182,7 @@ namespace MyBudget.Controllers
                             {
                                 h.Date,
                                 h.PreviousDeposit,
+                                h.ActualDeposit,
                                 h.Difference
                             })
                     })
