@@ -40,9 +40,9 @@ To set up the project locally, follow these steps:
 
 ## Running the Python Scripts for Charts
 -The application uses Python scripts to generate charts, so ensure you have the following dependencies installed:
-
+```bash
 pip install pandas plotly colorama
-
+```
 -The Python scripts are executed automatically when the application prepares data for chart generation. All generated charts will be saved to the wwwroot/Graphs directory.
 
 ## How It Works
