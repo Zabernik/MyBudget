@@ -39,11 +39,11 @@ To set up the project locally, follow these steps:
 5. The application will be accessible on `http://localhost:[port]`.
 
 ## Running the Python Scripts for Charts
--The application uses Python scripts to generate charts, so ensure you have the following dependencies installed:
+- The application uses Python scripts to generate charts, so ensure you have the following dependencies installed:
 ```bash
 pip install pandas plotly colorama
 ```
--The Python scripts are executed automatically when the application prepares data for chart generation. All generated charts will be saved to the wwwroot/Graphs directory.
+- The Python scripts are executed automatically when the application prepares data for chart generation. All generated charts will be saved to the wwwroot/Graphs directory.
 
 ## How It Works
 The dashboard displays an overview of all deposits, including their names and current balances. By clicking on any deposit, the user can view a detailed chart that shows the history of the selected deposit, including previous and current balances.
